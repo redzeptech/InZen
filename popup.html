@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InZen Dashboard</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <h1 class="popup-title">InZen</h1>
+      <p class="popup-subtitle">LinkedIn Feed Analizi</p>
+    </header>
+
+    <main class="popup-content">
+      <section class="stat-card">
+        <div class="stat-icon">🛡️</div>
+        <div class="stat-body">
+          <h3 class="stat-label">Gürültü Filtresi</h3>
+          <p class="stat-value" id="noise-count">0</p>
+          <p class="stat-desc">Bugün kaç tane 'uzman/guru' postu engellendi?</p>
+        </div>
+      </section>
+
+      <section class="stat-card">
+        <div class="stat-icon">⏱️</div>
+        <div class="stat-body">
+          <h3 class="stat-label">Zaman Analizi</h3>
+          <p class="stat-desc stat-time-desc" id="trap-time">Algoritma seni 0 dakika boyunca etkileşim tuzaklarında tutmaya çalıştı.</p>
+        </div>
+      </section>
+
+      <section class="stat-card">
+        <div class="stat-icon">📊</div>
+        <div class="stat-body">
+          <h3 class="stat-label">Manipülasyon Oranı</h3>
+          <p class="stat-value" id="manipulation-rate">%0</p>
+          <p class="stat-desc">Feed'inin ne kadarı yapay etkileşimden oluşuyor?</p>
+        </div>
+      </section>
+
+      <button type="button" class="reset-btn" id="reset-btn">Verileri Sıfırla</button>
+    </main>
+
+    <footer class="popup-footer">
+      <span class="footer-date" id="footer-date"></span>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

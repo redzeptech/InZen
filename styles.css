@@ -1,0 +1,235 @@
+/**
+ * InZen - Matrix Overlay & Dark Mode
+ * Analiz kutucukları için profesyonel, karanlık tema uyumlu tasarım.
+ */
+
+/* Sağ paneli gizle */
+.scaffold-layout__aside {
+  display: none !important;
+}
+
+.scaffold-layout__main {
+  grid-area: main;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* ========== Matrix Overlay ========== */
+.inzen-matrix-overlay {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  left: auto;
+  bottom: auto;
+  min-width: 180px;
+  max-width: 260px;
+  pointer-events: auto;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(18, 18, 22, 0.96) 0%,
+    rgba(28, 28, 36, 0.94) 100%
+  );
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Promoted: tam overlay ile grileştirme */
+.inzen-promoted-overlay .inzen-matrix-overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  max-width: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.inzen-promoted-overlay {
+  filter: grayscale(0.7) brightness(0.85);
+}
+
+.inzen-overlay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.inzen-overlay-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+.inzen-overlay-score {
+  font-size: 14px;
+  font-weight: 700;
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.12);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.inzen-overlay-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.inzen-overlay-badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 4px 10px;
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border-radius: 6px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  font-weight: 500;
+}
+
+.inzen-overlay-manipulation {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Promoted overlay - yarı saydam gri ton, arka plan görünsün */
+.inzen-promoted-overlay .inzen-matrix-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(55, 65, 81, 0.75) 0%,
+    rgba(75, 85, 99, 0.7) 100%
+  );
+}
+
+.inzen-promoted-overlay .inzen-overlay-badge {
+  background: rgba(156, 163, 175, 0.3);
+  color: #e5e7eb;
+  border-color: rgba(156, 163, 175, 0.4);
+}
+
+.inzen-promoted-overlay .inzen-overlay-score {
+  color: #9ca3af;
+  background: rgba(156, 163, 175, 0.2);
+}
+
+/* Yüksek manipülasyon - opacity + hover */
+.inzen-high-manipulation {
+  opacity: 0.5;
+  transition: opacity 0.25s ease;
+}
+
+.inzen-high-manipulation:hover {
+  opacity: 1;
+}
+
+/* Promoted overlay ortada büyük etiket */
+.inzen-promoted-overlay .inzen-overlay-header {
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inzen-promoted-overlay .inzen-overlay-score {
+  font-size: 24px;
+}
+
+.inzen-promoted-overlay .inzen-overlay-badges {
+  justify-content: center;
+}
+
+/* Analiz paneli - Bağlantı kur butonunun yanına (Matrix teması) */
+.inzen-matrix-box {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #00ff41;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  z-index: 9999;
+  border: 1px solid #00ff41;
+}
+
+.inzen-matrix-box.inzen-cyberpunk--red {
+  color: #ff4444;
+  border-color: #ff4444;
+  box-shadow: 0 0 8px rgba(255, 68, 68, 0.5);
+}
+
+.inzen-matrix-box.inzen-cyberpunk--green {
+  color: #00ff41;
+  border-color: #00ff41;
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
+}
+
+.inzen-engagement-warning {
+  color: #fbbf24 !important;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.inzen-manipulation-main {
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+/* Analiz badge - Bağlantı kur butonunun yanı */
+.inzen-analysis-badge {
+  position: absolute;
+  top: 12px;
+  right: 60px;
+  min-width: 160px;
+  background: rgba(15, 15, 15, 0.9);
+  border: 1px solid #00ff41;
+  color: #00ff41;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+  pointer-events: none;
+}
+
+/* Düşük kalite post - soluk ve gri */
+.inzen-low-quality {
+  opacity: 0.4;
+  filter: grayscale(80%);
+  transition: opacity 0.3s ease;
+}
+
+.inzen-low-quality:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* Gürültü badge (content.js) */
+.inzen-noise-badge {
+  position: absolute !important;
+  top: 8px !important;
+  left: 8px !important;
+  z-index: 10 !important;
+  background: rgba(180, 83, 9, 0.9) !important;
+  color: white !important;
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
