@@ -30,6 +30,14 @@ LinkedIn feed'indeki reklamları, gürültüyü ve manipülasyonu tespit eden Ch
 | **Privacy** | 100% Local, No Data Tracking, Open Source |
 
 ---
+## 🧩 Digital Forensics & The Invisible Trace
+Dijital dünyada her etkileşim (scroll, hover, click) bir **adli kanıttır**. 
+LinkedIn algoritması bu kanıtları toplayarak sizin "Psikolojik Profilinizi" çıkarır.
+
+**InZen ne yapar?**
+- **Evidence Collection:** Algoritmanın hangi veriyi "değerli" saydığını (Velocity & Engagement) anlık yakalar.
+- **Trace Obfuscation:** Gürültülü içerikleri flulaştırarak odak noktanızı (Digital Attention) korur.
+- **Local Chain of Custody:** Tüm veriler sadece sizin `localhost` sunucunuzda (Python Backend) saklanır. Veriniz sizin mülkiyetinizde kalır.
 
 ## Özellikler
 
