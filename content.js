@@ -36,6 +36,22 @@
     'tüm yorumları gör'
   ];
 
+  // Anti-Forensics: Dijital izi bulanıklaştırma - algoritmayı şaşırtacak rastgele sinyaller
+  function ghostInteract() {
+    console.log('InZen: Dijital iziniz bulanıklaştırılıyor (Anti-Forensics)...');
+    try {
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight;
+      document.dispatchEvent(new MouseEvent('mousemove', { clientX: x, clientY: y, bubbles: true }));
+      const dy = Math.round((Math.random() - 0.5) * 2);
+      const dx = Math.round((Math.random() - 0.5) * 2);
+      if (dx !== 0 || dy !== 0) {
+        window.scrollBy(dx, dy);
+        setTimeout(() => window.scrollBy(-dx, -dy), 80 + Math.random() * 120);
+      }
+    } catch (_) {}
+  }
+
   const POST_SELECTORS = [
     '.feed-shared-update-v2',
     '.feed-shared-update-v3',
@@ -474,8 +490,92 @@
       .inzen-mute-btn:hover {
         background: rgba(239, 68, 68, 0.35);
       }
+      .inzen-forensic-toast {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 2147483645;
+        max-width: 340px;
+        padding: 14px 18px;
+        background: rgba(30, 30, 35, 0.95);
+        border: 1px solid rgba(245, 158, 11, 0.4);
+        border-radius: 8px;
+        color: rgba(228, 228, 231, 0.9);
+        font-size: 12px;
+        line-height: 1.5;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        animation: inzen-fade-in 0.4s ease;
+      }
+      .inzen-forensic-toast::before {
+        content: '🔍 Forensic Monitor';
+        display: block;
+        font-size: 10px;
+        font-weight: 600;
+        color: #f59e0b;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 6px;
+      }
     `;
     document.head.appendChild(style);
+  }
+
+  function showForensicAlert(message) {
+    const existing = document.getElementById('inzen-forensic-toast');
+    if (existing) existing.remove();
+    const toast = document.createElement('div');
+    toast.id = 'inzen-forensic-toast';
+    toast.className = 'inzen-forensic-toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transition = 'opacity 0.4s';
+      setTimeout(() => toast.remove(), 400);
+    }, 5000);
+  }
+
+  function initForensicMonitor() {
+    let scrollDepthShown = false;
+    const hoverTimers = new WeakMap();
+
+    window.addEventListener('scroll', () => {
+      if (scrollDepthShown) return;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollHeight <= 0) return;
+      const pct = Math.round((scrollTop / scrollHeight) * 100);
+      if (pct >= 70) {
+        scrollDepthShown = true;
+        showForensicAlert('Şu an sayfanın %70\'ine indiniz, ilgi alanınız haritalandı.');
+      }
+    }, { passive: true });
+
+    document.body.addEventListener('mouseover', (e) => {
+      const post = e.target.closest?.('.feed-shared-update-v2, .feed-shared-update-v3, [class*="feed-shared-update"], article, [data-id^="urn:li:activity:"]');
+      if (!post) return;
+      const timer = setTimeout(() => {
+        showForensicAlert('Bir postun üzerinde 3 saniye durdunuz, bu konu profilinize etiketlendi.');
+      }, 3000);
+      hoverTimers.set(post, timer);
+    }, true);
+
+    document.body.addEventListener('mouseout', (e) => {
+      const post = e.target.closest?.('.feed-shared-update-v2, .feed-shared-update-v3, [class*="feed-shared-update"], article, [data-id^="urn:li:activity:"]');
+      if (post) {
+        const timer = hoverTimers.get(post);
+        if (timer) {
+          clearTimeout(timer);
+          hoverTimers.delete(post);
+        }
+      }
+    }, true);
+
+    document.body.addEventListener('click', (e) => {
+      const link = e.target.closest?.('a[href]');
+      if (!link || link.getAttribute('href')?.startsWith('#')) return;
+      showForensicAlert('Tıkladığınız her bağlantı dijital parmak izinizle mühürlendi.');
+    }, true);
   }
 
   function checkConsecutiveNoiseAndWarn() {
@@ -586,6 +686,8 @@
   function init() {
     injectStyles();
     initTimeTracking();
+    initForensicMonitor();
+    setInterval(ghostInteract, 180000 + Math.random() * 120000);
 
     const run = () => requestAnimationFrame(scanPosts);
 

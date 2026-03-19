@@ -128,3 +128,11 @@ body {
   font-size: 11px;
   color: rgba(228, 228, 231, 0.4);
 }
+
+.footer-matrix {
+  font-size: 10px;
+  color: rgba(0, 255, 65, 0.6);
+  font-style: italic;
+  margin-top: 8px;
+  line-height: 1.4;
+}

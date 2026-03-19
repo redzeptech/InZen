@@ -52,6 +52,12 @@ LinkedIn feed'indeki reklamları, gürültüyü ve manipülasyonu tespit eden Ch
 
 ---
 
+## 🕵️ Digital Forensics Perspective / Adli Bilişim Uyarısı
+
+> *"Dijital dünyada silinen hiçbir şey yok olmaz, sadece saklanır. LinkedIn algoritması sizin 'neye baktığınızı' değil, 'nasıl baktığınızı' analiz eder. InZen, bu veri madenciliği sürecini görünür kılar. Unutmayın: Dijital haritanız her saniye çiziliyor ve siz farkında değilsiniz."*
+
+---
+
 ## Legal Disclaimer
 
 Bu proje eğitim ve kişisel kullanım amacıyla geliştirilmiştir.
