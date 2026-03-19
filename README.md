@@ -67,3 +67,8 @@ Bu proje eğitim ve kişisel kullanım amacıyla geliştirilmiştir.
 - LinkedIn hizmetlerini değiştiren veya atlayan araçların kullanımı, hesap kısıtlaması veya askıya alınmasına yol açabilir.
 
 **Geliştirici**, bu eklentinin kullanımından doğabilecek hiçbir yasal veya teknik sonuçtan sorumlu tutulamaz. Eklenti "olduğu gibi" (as-is) sunulmaktadır.
+
+🧩 The Forensic Perspective
+Bu proje bir Anti-Forensics deneyi olarak kurgulanmıştır. LinkedIn gibi platformlar, kullanıcı davranışlarını birer "adli kanıt" gibi toplar ve reklam modellerine satar. InZen, bu veri toplama sürecine bir şeffaflık katmanı ekler.
+
+Unutmayın: Algoritma sizi izliyorsa, siz de algoritmayı izleyebilirsiniz.
